@@ -1,0 +1,22 @@
+package abstraction;
+interface A {
+	double PI=3.14;
+	public abstract void displayA();
+}
+class DisplayA implements A {
+
+	@Override
+	public void displayA() {
+		// TODO Auto-generated method stub
+		System.out.println("I am in Display A Class");
+	}
+	
+}
+public class InterfaceEx {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+         A a =new A(); 
+	}
+
+}

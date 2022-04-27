@@ -1,4 +1,0 @@
-
-public record Employe(String name, int empid, String company) {
-
-}

@@ -1,0 +1,14 @@
+package abstraction;
+abstract class Area {
+	void displayMsg() {
+		System.out.println("This is display of Area Class");
+	}
+}
+public class AbstractClassEx {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+             Area a =new Area();
+	}
+
+}
