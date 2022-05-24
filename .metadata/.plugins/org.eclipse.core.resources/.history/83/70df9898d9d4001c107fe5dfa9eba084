@@ -1,0 +1,29 @@
+package ExceptionHandling;
+
+import java.util.Scanner;
+
+class Division {
+	double num1, num2;
+		
+	void getDivision() throws ArithmeticException {
+		Scanner in =new Scanner(System.in);
+		System.out.println("Enter number 1");
+		num1=in.nextDouble();
+		System.out.println("Enter number 2");
+		num2=in.nextDouble();
+		Double div =num1/num2;
+		System.out.println("Division of 2 number is =%f".formatted(div));
+		System.out.println("Ent of getDivision() method");
+	}
+}
+public class DividebyZeroExceptionEx {
+
+	public static void main(String[] args)  {
+		// TODO Auto-generated method stub
+		System.out.println("Starting of main() method");
+            Division d =new Division();
+            d.getDivision();
+            System.out.println("End of main() method");
+	}
+
+}

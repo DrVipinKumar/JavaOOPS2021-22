@@ -1,0 +1,20 @@
+package io;
+
+import java.io.File;
+
+class Copy{
+	File fread =new File("src\\Greater.java");
+	File fwrite =new File("src\\Greater.txt");
+	
+	Copy(){
+		
+	}
+}
+public class CopyFile {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+			new Copy();
+	}
+
+}

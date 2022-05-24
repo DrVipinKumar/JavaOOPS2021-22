@@ -1,0 +1,25 @@
+package io;
+
+import java.io.File;
+
+public class DirFile {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		String fileType;
+        File dir =new File("src\\");
+        File files[]=dir.listFiles();
+        System.out.println("\tFile Name\t\tFile Type\t\n");
+        for(File file : files) {
+        	if(file.isFile()) {
+        		fileType="File";
+        	} else 
+        	{
+        		fileType="Directory";
+        	}
+        	
+        	System.out.println("\t"+file.getName()+"\t\t"+fileType+"\t");
+        }
+	}
+
+}

@@ -1,0 +1,22 @@
+package io;
+
+import java.io.FileWriter;
+import java.io.IOException;
+
+public class WriteFile {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+      String data="This is my data for my file";
+      try {
+		FileWriter fw =new FileWriter("src\\MyFile.txt");
+		fw.write(data);
+		fw.close();
+		System.out.println("File Created");
+	} catch (IOException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+	}
+
+}
