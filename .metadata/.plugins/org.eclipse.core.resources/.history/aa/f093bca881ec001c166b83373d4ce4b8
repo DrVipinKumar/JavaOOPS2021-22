@@ -1,0 +1,22 @@
+package swingex;
+
+import javax.swing.JFrame;
+
+class KeyCode extends JFrame
+{
+	KeyCode(){
+		
+	}
+}
+
+public class KeyHandlingEx {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+			KeyCode kc =new KeyCode();
+			kc.setVisible(true);
+			kc.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+			kc.setBounds(100,100,600,400);
+	}
+
+}

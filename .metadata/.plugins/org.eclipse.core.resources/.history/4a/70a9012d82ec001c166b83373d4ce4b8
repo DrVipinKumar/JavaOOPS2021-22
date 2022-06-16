@@ -1,0 +1,35 @@
+package swingex;
+
+import java.awt.Container;
+import java.awt.Font;
+
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+
+class KeyCode extends JFrame
+{
+	JLabel name;
+	Container c;
+	KeyCode(){
+		c=this.getContentPane();
+		c.setLayout(null);
+		Font f =new Font("Arial",Font.BOLD,34);
+		name=new JLabel("KIET");
+		name.setFont(f);
+		name.setBounds(10,10,100,200);
+		c.add(name);
+		
+	}
+}
+
+public class KeyHandlingEx {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+			KeyCode kc =new KeyCode();
+			kc.setVisible(true);
+			kc.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+			kc.setBounds(100,100,600,400);
+	}
+
+}

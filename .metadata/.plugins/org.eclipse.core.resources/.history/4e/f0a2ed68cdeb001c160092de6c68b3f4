@@ -1,0 +1,20 @@
+package swingex;
+
+import javax.swing.JFrame;
+
+class MyPainterCanvas extends JFrame{
+	MyPainterCanvas(){
+		
+	}
+}
+public class MyPainter {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+				MyPainterCanvas p=new MyPainterCanvas();
+				p.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+				p.setBounds(200,200,600,400);
+				p.setVisible(true);
+	}
+
+}

@@ -1,0 +1,44 @@
+package swingex.drawingex;
+
+import java.awt.Canvas;
+import java.awt.Color;
+import java.awt.Container;
+import java.awt.Graphics;
+
+import javax.swing.JFrame;
+class MyCanvas extends Canvas {
+
+	@Override
+	public void paint(Graphics g) {
+		// TODO Auto-generated method stub
+		super.paint(g);
+		g.setColor(Color.RED);
+		g.drawString("Java Swing", 100, 100);
+		g.setColor(Color.BLUE);
+		g.drawRect(100, 150, 200, 200);
+		g.setColor(Color.GREEN);
+		g.drawOval(400, 200, 150, 150);
+	}
+	
+}
+class MyDrawing extends JFrame {
+	Container c;
+	MyCanvas dr;
+	MyDrawing(){
+		c=this.getContentPane();
+		dr=new MyCanvas();
+		c.add(dr);
+	}
+}
+public class DrawingEx {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+				MyDrawing d =new MyDrawing();
+				d.setSize(800,600);
+				d.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+				d.setLocationRelativeTo(null);
+				d.setVisible(true);
+	}
+
+}

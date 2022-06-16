@@ -1,0 +1,44 @@
+package swingex;
+
+import java.awt.Canvas;
+import java.awt.Color;
+import java.awt.Container;
+import java.awt.Graphics;
+
+import javax.swing.JComponent;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+class Painter extends JPanel{
+	@Override
+	public void paint(Graphics g) {
+		// TODO Auto-generated method stub
+		g.setColor(Color.RED);
+		g.drawString("Dr. Vipin Classes", 50,100);
+		g.drawRect(12, 34, 100, 100);
+	}
+}
+class Shapes extends JFrame{
+	Shapes(){
+		Painter p =new Painter();
+		p.setBounds(60, 60, 400, 300);
+		p.setBackground(Color.YELLOW);
+		Container c =this.getContentPane();
+		c.add(p);
+	}
+
+	
+	
+}
+public class DrawingEx {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+         Shapes s =new Shapes();
+        // s.setLayout(null);
+         s.setBounds(50,50,600,400);
+         s.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+         s.setVisible(true);
+	}
+
+}

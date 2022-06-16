@@ -1,0 +1,87 @@
+package swingex;
+
+
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Container;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
+
+class Windows extends JFrame implements ActionListener{
+	Container c;
+	JTextField user;
+	JPasswordField pass;
+	Windows(){  
+		c=this.getContentPane();
+		c.setLayout(null);
+		Font f =new Font("Arial",Font.BOLD,23);
+		//ImageIcon mi=new ImageIcon("src//swingex//hand.png");
+		JLabel logininfo=new JLabel("Login Information",JLabel.CENTER);
+		logininfo.setSize(300,50);
+		logininfo.setLocation(150,50);
+		logininfo.setFont(f);
+		JLabel username=new JLabel("Username:",JLabel.CENTER);
+		username.setSize(300,50);
+		username.setLocation(10,100);
+		username.setFont(f);
+		JLabel password=new JLabel("Password:",JLabel.CENTER);
+		password.setSize(300,50);
+		password.setLocation(10,150);
+		password.setFont(f);
+		user=new JTextField();
+		user.setSize(300,50);
+		user.setLocation(230,100);
+		user.setFont(f);
+		pass=new JPasswordField();
+		pass.setSize(300,50);
+		pass.setLocation(230,150);
+		pass.setFont(f);
+		JButton login=new JButton("Login");
+		login.setSize(150,50);
+		login.setLocation(230,250);
+		login.setFont(f);
+		login.addActionListener(this);
+		c.add(logininfo);
+		c.add(username); 
+		c.add(password);
+		c.add(user);
+		c.add(pass);
+		c.add(login);
+	}
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+	//	JOptionPane.showMessageDialog(this, "Hello");
+		String name=user.getText().toString();
+		String pwd=pass.getText().toString();
+		if(name.equalsIgnoreCase("kiet") && pwd.equalsIgnoreCase("mca")) {
+			JOptionPane.showMessageDialog(this, "Welcome to Swing");
+		} else {
+			JOptionPane.showMessageDialog(this, "Invalid username and password");
+		}
+	}
+}
+public class FirstGui {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+			Windows w =new Windows();
+			w.setResizable(false);
+			w.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+			w.setSize(600,400);		
+			w.setLocation(200, 200);
+			w.setVisible(true);
+			
+			//w.setBounds(200,200,600,400);
+	}
+
+}

@@ -1,0 +1,21 @@
+package swingex.drawingex;
+
+import javax.swing.JFrame;
+
+class MyDrawing extends JFrame {
+	MyDrawing(){
+		
+	}
+}
+public class DrawingEx {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+				MyDrawing d =new MyDrawing();
+				d.setSize(800,600);
+				d.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+				d.setLocationRelativeTo(null);
+				d.setVisible(true);
+	}
+
+}

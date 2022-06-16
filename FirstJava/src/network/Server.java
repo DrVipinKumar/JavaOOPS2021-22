@@ -7,36 +7,79 @@ import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
-
-public class Server {
-
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		String line=null;
+class MyServer{
+	BufferedReader brin=new BufferedReader(new InputStreamReader(System.in));
+	BufferedReader br;
+	OutputStream os;
+	PrintWriter out;
+	ServerSocket ss;
+	Socket s;
+	String line=null;
+	String data=null;
+	MyServer(){
+		
        try {
-		ServerSocket ss =new ServerSocket(9999);
+		ss =new ServerSocket(9999);
 		System.out.println("Lisening on port 9999...");
-		Socket s =ss.accept();
+		s =ss.accept();
 		if (s!=null) {
-			System.out.println("Connected on port 9999");
-			BufferedReader br =new BufferedReader(new InputStreamReader(s.getInputStream()));
-			OutputStream os =s.getOutputStream();
-			PrintWriter out =new PrintWriter(os,true);
-			boolean check=true;
-			while(check) {
-			line =br.readLine();
-			System.out.println("Client:"+line);
-			if(line.equalsIgnoreCase("bye")) {
-				check=false;
+			System.out.println("Connected with Client");
+			br =new BufferedReader(new InputStreamReader(s.getInputStream()));
+			os =s.getOutputStream();
+			out =new PrintWriter(os,true);
+			readMessage();
+			writeMessage();
+			
 			}
-			out.println(line);
-			}
-			}
+			
 	} catch (IOException e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
 	}
        
+	}
+	void readMessage() {
+		
+		Runnable r =()->{
+		boolean check=true;
+		while(check) {
+		try {
+			line =br.readLine();
+			System.out.println("Client:"+line);
+			if(line.equalsIgnoreCase("bye")) {
+				check=false;
+			}
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}}};
+		new Thread(r).start();
+	}
+	void writeMessage() {
+		
+		Runnable r =()->{
+		boolean check=true;
+		while(check) {
+			try {
+				System.out.print("<<");
+				data=brin.readLine();
+				out.println(data);
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+	
+		}
+		};
+		new Thread(r).start();
+	}
+}
+
+public class Server {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		new MyServer();
 	}
 
 }

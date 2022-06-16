@@ -1,0 +1,20 @@
+package swingex;
+
+import javax.swing.JFrame;
+
+class Shapes extends JFrame{
+	Shapes(){
+		
+	}
+}
+public class DrawingEx {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+         Shapes s =new Shapes();
+         s.setBounds(50,50,600,400);
+         s.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+         s.setVisible(true);
+	}
+
+}
