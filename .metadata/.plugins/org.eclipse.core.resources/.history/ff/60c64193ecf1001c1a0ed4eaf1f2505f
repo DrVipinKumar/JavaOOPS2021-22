@@ -1,0 +1,139 @@
+package swingex.notepadex;
+
+import java.awt.FileDialog;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+
+import javax.swing.JFileChooser;
+import javax.swing.JFrame;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
+import javax.swing.filechooser.FileNameExtensionFilter;
+class FileHandling {
+	Notepad n;
+	Path path;
+	String fdata;
+	String filename=null;
+	String filepath=null;
+	FileHandling(Notepad n){
+		this.n=n;
+		
+	}
+	void newFile() {
+		n.data.setText("");
+	}
+	void openFile() {
+		JFileChooser fd =new JFileChooser();
+		FileNameExtensionFilter filter=new FileNameExtensionFilter("Text File(.txt|.java","txt|java");
+//		FileDialog fd =new FileDialog(n,"Open",FileDialog.LOAD);
+//		fd.setVisible(true);
+		if(fd.getFile()!=null) {
+			filename=fd.getFile();
+			filepath=fd.getDirectory();
+		//System.out.println(filepath+filename);
+			path=Path.of(filepath+filename);
+			try {
+				fdata =Files.readString(path);
+				n.data.setText(fdata);
+				n.setTitle(filename);
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+	}
+}
+class Notepad extends JFrame implements ActionListener{
+	JMenuBar mb;
+	JMenu file,edit, help;
+	JMenuItem fnew,open,save,saveas,print,exit,copy,paste,selectall;
+	JTextArea data;
+	FileHandling filehandle;
+	Notepad(){
+		filehandle=new FileHandling(this);
+		
+		data=new JTextArea();
+		//Menu
+		file=new JMenu("File");
+		fnew=new JMenuItem("New");
+		fnew.addActionListener(this);
+		fnew.setActionCommand("new");
+		open=new JMenuItem("Open");
+		open.setActionCommand("open");
+		open.addActionListener(this);
+		save=new JMenuItem("Save");
+		save.setActionCommand("Save");
+		save.addActionListener(this);
+		saveas=new JMenuItem("SaveAs");
+		saveas.setActionCommand("SaveAs");
+		saveas.addActionListener(this);
+		print=new JMenuItem("Print");
+		print.setActionCommand("print");
+		print.addActionListener(this);
+		exit=new JMenuItem("Exit");
+		exit.setActionCommand("exit");
+		exit.addActionListener(this);
+		file.add(fnew);
+		file.add(open);
+		file.add(save);
+		file.add(saveas);
+		file.add(print);
+		file.addSeparator();
+		file.add(exit);
+		//edit menu
+		edit=new JMenu("Edit");
+		copy=new JMenuItem("Copy");
+		copy.addActionListener(this);
+		copy.setActionCommand("copy");
+		paste=new JMenuItem("Paste");
+		paste.setActionCommand("paste");
+		paste.addActionListener(this);
+		selectall=new JMenuItem("SelectAll");
+		selectall.setActionCommand("selectall");
+		selectall.addActionListener(this);
+		edit.add(copy);
+		edit.add(paste);
+		edit.add(selectall);
+		//help menu
+		help=new JMenu("Help");
+		help.setActionCommand("help");
+				
+		//MenuBar
+		mb=new JMenuBar();
+		mb.add(file);
+		mb.add(edit);
+		mb.add(help);
+		//setMenuBar
+		this.setJMenuBar(mb);
+		this.add(new JScrollPane(data));
+		
+	}
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		String items=e.getActionCommand();
+		switch(items) {
+		case "new": filehandle.newFile();break;
+		case "open": filehandle.openFile();break;
+		}
+	}
+}
+public class MyNotepad {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+                  Notepad n =new Notepad();
+                  n.setTitle("Untitled");
+                  n.setSize(800,600);
+                  n.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                  n.setLocationRelativeTo(null);               
+                  n.setVisible(true);
+	}
+
+}

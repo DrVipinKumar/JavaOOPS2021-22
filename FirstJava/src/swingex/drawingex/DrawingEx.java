@@ -4,23 +4,19 @@ import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Container;
 import java.awt.Graphics;
+import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-class MouseHandler implements MouseListener{
+class MouseHandler extends MouseAdapter{
 	MyCanvas can;
 	 MouseHandler(MyCanvas can){
 		 this.can=can;
 	 }
  int x, y;
-	@Override
-	public void mouseClicked(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
+	
 	@Override
 	public void mousePressed(MouseEvent e) {
 		// TODO Auto-generated method stub
@@ -35,18 +31,7 @@ class MouseHandler implements MouseListener{
 		g.fillRect(x, y, e.getX()-x, e.getY()-y);
 	}
 
-	@Override
-	public void mouseEntered(MouseEvent e) {
-		// TODO Auto-generated method stub
 		
-	}
-
-	@Override
-	public void mouseExited(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-	
 }
 class MyCanvas extends Canvas{
 

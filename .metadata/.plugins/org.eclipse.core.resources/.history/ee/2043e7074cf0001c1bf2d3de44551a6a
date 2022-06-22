@@ -1,0 +1,21 @@
+package swingex.drawingex;
+
+import javax.swing.JFrame;
+
+class Painter extends JFrame{
+	Painter(){
+		
+	}
+}
+public class MyPainter {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+           Painter p =new Painter();
+           p.setSize(800,600);
+           p.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+           p.setLocationRelativeTo(null);
+           p.setVisible(true);
+	}
+
+}
